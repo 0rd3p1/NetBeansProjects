@@ -11,21 +11,23 @@ import java.util.Collections;
  *
  * @author Aluno
  */
-public class Exec1 {
+public class Exec2 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         // Declarando o ArrayList
-        ArrayList<String> cidade = new ArrayList<>();
+        ArrayList<Integer> n = new ArrayList<>();
+
+        // Declarando o valor do ArrayList
+        Collections.addAll(n, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         
-        // Definindo o valor do ArrayList
-        Collections.addAll(cidade, "tramandai", "goias", "imbe", "sao paulo", "cidreira");
+        // Removendo valores pares
+        n.removeIf(x -> x % 2 == 0);
         
-        // Printando as cidades
-        System.out.println("As cidades sao: " + cidade);
+        // Printando o resultado
+        System.out.println("Lista sem numeros pares -> " + n);
     }
-    
 }

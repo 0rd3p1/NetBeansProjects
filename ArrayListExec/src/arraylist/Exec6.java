@@ -11,7 +11,7 @@ import java.util.Collections;
  *
  * @author Aluno
  */
-public class Exec1 {
+public class Exec6 {
 
     /**
      * @param args the command line arguments
@@ -19,13 +19,19 @@ public class Exec1 {
     public static void main(String[] args) {
         
         // Declarando o ArrayList
-        ArrayList<String> cidade = new ArrayList<>();
+        ArrayList<String> frut = new ArrayList<>();
         
-        // Definindo o valor do ArrayList
-        Collections.addAll(cidade, "tramandai", "goias", "imbe", "sao paulo", "cidreira");
+        // Definindo as frutas na lista
+        Collections.addAll(frut, "Maca", "Banana", "Pera", "Goiaba", "Abacaxi");
         
-        // Printando as cidades
-        System.out.println("As cidades sao: " + cidade);
+        // Pritnando a lista antes de substituir a terceira fruta
+        System.out.println(frut);
+        
+        // Substituindo a terceira fruta
+        frut.set(2, "Morango");
+        
+        // Printando a lista apos a troca
+        System.out.println("Lista final: " + frut);
     }
     
 }

@@ -11,7 +11,7 @@ import java.util.Collections;
  *
  * @author Aluno
  */
-public class Exec1 {
+public class Exec8 {
 
     /**
      * @param args the command line arguments
@@ -19,13 +19,15 @@ public class Exec1 {
     public static void main(String[] args) {
         
         // Declarando o ArrayList
-        ArrayList<String> cidade = new ArrayList<>();
+        ArrayList<String> pais = new ArrayList<>();
         
-        // Definindo o valor do ArrayList
-        Collections.addAll(cidade, "tramandai", "goias", "imbe", "sao paulo", "cidreira");
+        // Definindo os paises
+        Collections.addAll(pais, "Angola", "Brazil", "Noruegua", "Cazaquistao", "EUA");
         
-        // Printando as cidades
-        System.out.println("As cidades sao: " + cidade);
+        // Printando os paises dentro do for
+        for (String i : pais) {
+            System.out.println("O nome do pais e: " + pais);
+        }
     }
     
 }

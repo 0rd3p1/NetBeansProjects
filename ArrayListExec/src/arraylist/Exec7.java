@@ -11,7 +11,7 @@ import java.util.Collections;
  *
  * @author Aluno
  */
-public class Exec1 {
+public class Exec7 {
 
     /**
      * @param args the command line arguments
@@ -19,13 +19,15 @@ public class Exec1 {
     public static void main(String[] args) {
         
         // Declarando o ArrayList
-        ArrayList<String> cidade = new ArrayList<>();
+        ArrayList<Integer> num = new ArrayList<>();
         
-        // Definindo o valor do ArrayList
-        Collections.addAll(cidade, "tramandai", "goias", "imbe", "sao paulo", "cidreira");
+        // Definindo os valores da lista
+        Collections.addAll(num, 1, 3, 2, 6, 7, 8, 4, 10, 5, 9);
         
-        // Printando as cidades
-        System.out.println("As cidades sao: " + cidade);
+        // Ordenando em ordem crescente a lista
+        Collections.sort(num);
+        
+        // Printando o resultado
+        System.out.println("Os valores ordenados ficam " + num);
     }
-    
 }

@@ -11,21 +11,20 @@ import java.util.Collections;
  *
  * @author Aluno
  */
-public class Exec1 {
+public class Exec5 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         // Declarando o ArrayList
-        ArrayList<String> cidade = new ArrayList<>();
+        ArrayList<Character> lett = new ArrayList<>();
+
+        // Definindo as letras
+        Collections.addAll(lett, 'A', 'B', 'C', 'D');
         
-        // Definindo o valor do ArrayList
-        Collections.addAll(cidade, "tramandai", "goias", "imbe", "sao paulo", "cidreira");
-        
-        // Printando as cidades
-        System.out.println("As cidades sao: " + cidade);
+        // Pritando o tamanho da lista
+        System.out.println("Existem " + lett.size() + " caracteres na lista");
     }
-    
 }
