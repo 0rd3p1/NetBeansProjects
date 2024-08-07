@@ -4,7 +4,7 @@
  */
 package exercicios;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Data {
      * @param args the command line arguments
      */
     public static void main(String[] args){
-        Scanner teclado = new Scanner(System.in);
+        /*Scanner teclado = new Scanner(System.in);
         String mes;
         int mm;
         int ano;
@@ -58,6 +58,6 @@ public class Data {
             System.out.println("Voce nao e maior de idade");
         } else {
             System.out.println("Voce e maior de idade");
-        }
+        }*/
     }
 }
