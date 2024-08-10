@@ -1,6 +1,5 @@
 
-import java.util.Random;
-import java.util.Set;
+import java.util.Collections;
 import java.util.HashSet;
 
 /*
@@ -12,18 +11,20 @@ import java.util.HashSet;
  *
  * @author Aluno
  */
-public class ExecHash21 {
+public class ExecHash25 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Random ran = new Random();
-        Set<Integer> num = new HashSet<>();
+        HashSet<Integer> num = new HashSet<>();
+        Collections.addAll(num, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         
-        for (int i = 0; i < 10; i++) {
-            num.add(ran.nextInt(10));
+        Integer[] A = num.toArray(new Integer[0]);
+        
+        for (Integer i = 0; i < 10; i++) {
+            System.out.println(A[i]);
         }
-        System.out.println("Este HashSet contem " + num.size() + " numeros");
     }
+    
 }

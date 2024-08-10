@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package pkgwhile;
+package switchcaseexecs;
 
 import java.util.Scanner;
 
 /**
  *
- * @author TI
+ * @author Aluno
  */
-public class While_Menu {
+public class ExecSwitch5 {
 
     /**
      * @param args the command line arguments
@@ -22,7 +22,7 @@ public class While_Menu {
         
         do {
             System.out.println("Menu Principal");
-            System.out.println("1. Opcao 1");
+            System.out.println("1. Calculadora");
             System.out.println("2. Opcao 2");
             System.out.println("3. Sair");
             System.out.print("Escolha uma opcao: ");
@@ -32,6 +32,7 @@ public class While_Menu {
             switch (opcao) {
                 case 1:
                     System.out.println("Voce escolheu a opcao 1");
+                    break;
                 case 2: 
                     System.out.println("Voce escolheu a opcao 2");
                     break;
@@ -40,8 +41,10 @@ public class While_Menu {
                     break;
                 default: 
                     System.out.println("Opcao invalida! Tente novamente.");
+                    break;
             }   
         } while (opcao != 3); 
         entrada.close();
     }
+    
 }

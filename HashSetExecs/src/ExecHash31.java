@@ -1,6 +1,5 @@
 
-import java.util.Random;
-import java.util.Set;
+import java.util.Collections;
 import java.util.HashSet;
 
 /*
@@ -12,18 +11,16 @@ import java.util.HashSet;
  *
  * @author Aluno
  */
-public class ExecHash21 {
+public class ExecHash31 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Random ran = new Random();
-        Set<Integer> num = new HashSet<>();
+        HashSet<String> pal = new HashSet<>();
+        Collections.addAll(pal, "Faz", "Fazer", "Faz", "Faco", "Fiz", "Fiz");
         
-        for (int i = 0; i < 10; i++) {
-            num.add(ran.nextInt(10));
-        }
-        System.out.println("Este HashSet contem " + num.size() + " numeros");
+        System.out.println("A lista de plaavras unicas ficouu: " + pal);
     }
+    
 }
