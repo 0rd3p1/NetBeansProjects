@@ -12,13 +12,11 @@ public class Caneta {
     
     public static void main(String[] args) {
         
-        classCaneta C1 = new classCaneta();
+        classCaneta C1 = new classCaneta("Bic", "Azul", 1.25, 60);
         
-        C1.modelo = "Bic";
-        C1.cor = "Azul";
-        C1.ponta = 1.25;
-        C1.carga = 60;
-        C1.esta_tampada = false;
+        C1.destampar();
+        
+        C1.status();
         
     }
 }

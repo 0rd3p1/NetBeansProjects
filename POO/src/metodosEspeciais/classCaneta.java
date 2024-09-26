@@ -13,24 +13,22 @@ public class classCaneta {
     public String modelo;
     private String cor;
     private double ponta;
+    private double carga;
     private boolean esta_tampada;
     
-    public canetaConstrutor(String m, String c, double p) {
+    public classCaneta(String m, String co, double p, double ca) {
         this.modelo = m;
-        this.cor = c;
-        this.setPonta(p);
+        this.cor = co;
+        this.ponta = p;
+        this.carga = ca;
         this.tampar();
     }
     
     public void status() {
-        System.out.println("Modelo: " + this.getModelo());
+        System.out.println("Modelo: " + this.modelo);
         System.out.println("Cor: " + this.getCor());
         System.out.println("Ponta: " + this.getPonta());
         System.out.println("Esta tampada? " + this.esta_tampada);
-    }
-    
-    public String getModelo() {
-        return this.modelo;
     }
     
     public void setModelo(String m) {
@@ -51,6 +49,14 @@ public class classCaneta {
     
     public void setPonta(double p) {
         this.ponta = p;
+    }
+    
+    public double getCarga() {
+        return this.carga;
+    }
+    
+    public void setCarga(double ca) {
+        this.carga = ca;
     }
     
     public void tampar() {
