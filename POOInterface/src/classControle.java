@@ -7,13 +7,13 @@
  *
  * @author Aluno
  */
-public class controleRemoto implements controlador {
+public class classControle implements interControle {
     
     private int volume;
     private boolean ligado;
     private boolean passandoPrograma;
     
-    public controleRemoto() {
+    public classControle() {
         this.volume = 50;
         this.ligado = true;
         this.passandoPrograma = false;
@@ -57,16 +57,17 @@ public class controleRemoto implements controlador {
     public void abrirMenu() {
         System.out.println("Esta aberto?" + this.getLigado());
         System.out.println("Esta passando algum programa?" + this.getPassandoPrograma());
+        System.out.println("Volume: " + this.volume);
         
         for (int i = 0; i <= this.getVolume(); i += 10) {
-            System.out.print("|");
+            System.out.printf("|");
         }
         
     }
 
     @Override
     public void fecharMenu() {
-        System.out.println("Fechando menu...");
+        System.out.printf("\nFechando menu...");
     }
 
     @Override

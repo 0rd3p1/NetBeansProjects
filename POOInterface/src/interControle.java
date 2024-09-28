@@ -7,7 +7,7 @@
  *
  * @author Aluno
  */
-public interface controlador {
+public interface interControle {
     
     public abstract void ligar();
     public abstract void desligar();
