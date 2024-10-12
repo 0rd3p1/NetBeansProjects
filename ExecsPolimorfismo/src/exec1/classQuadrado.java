@@ -12,7 +12,7 @@ public class classQuadrado extends classForma {
 
     @Override
     void calcularArea(int n1, int n2) {
-        System.out.println("A area do quadrado e " + (n1 * n2));;;;
+        System.out.println("A area do quadrado e " + (n1 * n2));
     }
     
 }
