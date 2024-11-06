@@ -5,7 +5,7 @@
 package main;
 
 import control.usuarioController;
-import model.usuarioDAO;
+import model.usuarioSQL;
 import view.usuarioView;
 
 /**
@@ -16,8 +16,8 @@ public class main {
     
     public static void main(String[] args) {
         
-        usuarioDAO usuarioDAO = new usuarioDAO();
-        usuarioController usuarioController = new usuarioController(usuarioDAO);
+        usuarioSQL usuarioSQL = new usuarioSQL();
+        usuarioController usuarioController = new usuarioController(usuarioSQL);
         usuarioView usuarioView = new usuarioView(usuarioController);
         
         usuarioView.showMenu();
