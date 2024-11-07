@@ -40,7 +40,7 @@ public class usuarioSQL {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 usuario u = new usuario(rs.getInt("id"), rs.getString("nome"),
-                rs.getString("usuario"), rs.getString("senha"));
+                rs.getString("username"), rs.getString("senha"));
                 return Optional.of(u);
             }
         } catch (SQLException e) {

@@ -6,6 +6,7 @@ package view;
 
 import model.produto;
 import control.produtoController;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ import java.util.Scanner;
  * @author Pedro
  */
 public class produtoView {
-
+    
     private produtoController produtoController;
 
     public produtoView(produtoController produtoController) {
@@ -26,10 +27,8 @@ public class produtoView {
 
         System.out.print("Nome: ");
         String n = sc.nextLine();
-        sc.skip("\\R");
-
         System.out.print("Valor: ");
-        int v = sc.nextInt();
+        float v = sc.nextFloat();
 
         produtoController.add(n, v);
         System.out.println("Produto salvo!");
@@ -51,7 +50,7 @@ public class produtoView {
         System.out.print("ID: ");
         int id = sc.nextInt();
         Optional<produto> p = produtoController.getById(id);
-        p.ifPresentOrElse(pr -> System.out.println("ID: " + pr.getId() + "\tNome: " + pr.getN() + "\tValor: " + pr.getV(), () -> System.out.println("Nao encontrado!"));
+        p.ifPresentOrElse(pr -> System.out.println("ID: " + pr.getId() + "\tNome: " + pr.getN() + "\tValor: " + pr.getV()), () -> System.out.println("Nao encontrado!"));
     }
 
     public void getByName() {
@@ -64,11 +63,11 @@ public class produtoView {
         } else {
             for (produto p : res) {
                 System.out.print("ID: ");
-                System.out.print(f.getId() + "\t");
+                System.out.print(p.getId() + "\t");
                 System.out.print("Nome: ");
-                System.out.print(f.getN() + "\t");
+                System.out.print(p.getN() + "\t");
                 System.out.print("Valor: ");
-                System.out.print(f.getV() + "\t");
+                System.out.print(p.getV() + "\t");
             }
         }
     }
@@ -80,9 +79,9 @@ public class produtoView {
         sc.skip("\\R");
         System.out.print("\nNome: ");
         String n = sc.nextLine();
-        sc.skip("\\R")
+        sc.skip("\\R");
         System.out.print("\nValor: ");
-        float v = sc.nextLine();
+        float v = sc.nextFloat();
         if (produtoController.update(id, n, v)) {
             System.out.println("Produto atualizado!");
         } else {
@@ -106,16 +105,16 @@ public class produtoView {
         System.out.println("Valor: ");
         float v1 = sc.nextFloat();
         ArrayList<produto> res = produtoController.getByMin(v1);
-        if (res.isEmpity()) {
+        if (res.isEmpty()) {
             System.out.println("Produto nao encontrado!");
         } else {
             for (produto p : res) {
                 System.out.print("ID: ");
                 System.out.print(p.getId() + "\t");
                 System.out.print("Nome: ");
-                System.out.print(f.getN() + "\t");
+                System.out.print(p.getN() + "\t");
                 System.out.print("Valor: ");
-                System.out.print(f.getV() + "\t");
+                System.out.print(p.getV() + "\t");
             }
         }
     }
@@ -125,16 +124,16 @@ public class produtoView {
         System.out.println("Valor: ");
         float v1 = sc.nextFloat();
         ArrayList<produto> res = produtoController.getByMax(v1);
-        if (res.isEmpity()) {
+        if (res.isEmpty()) {
             System.out.println("Produto nao encontrado!");
         } else {
             for (produto p : res) {
                 System.out.print("ID: ");
                 System.out.print(p.getId() + "\t");
                 System.out.print("Nome: ");
-                System.out.print(f.getN() + "\t");
+                System.out.print(p.getN() + "\t");
                 System.out.print("Valor: ");
-                System.out.print(f.getV() + "\t");
+                System.out.print(p.getV() + "\t");
             }
         }
     }
@@ -146,16 +145,16 @@ public class produtoView {
         System.out.println("Segundo Valor");
         float v2 = sc.nextFloat();
         ArrayList<produto> res = produtoController.getByBet(v1, v2);
-        if (res.isEmpity()) {
+        if (res.isEmpty()) {
             System.out.println("Produto nao encontrado!");
         } else {
             for (produto p : res) {
                 System.out.print("ID: ");
                 System.out.print(p.getId() + "\t");
                 System.out.print("Nome: ");
-                System.out.print(f.getN() + "\t");
+                System.out.print(p.getN() + "\t");
                 System.out.print("Valor: ");
-                System.out.print(f.getV() + "\t");
+                System.out.print(p.getV() + "\t");
             }
         }
     }

@@ -47,7 +47,7 @@ public class usuarioGUI extends javax.swing.JFrame {
         txtUsername = new javax.swing.JTextField();
         lblSenha = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
-        btnFind = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
@@ -60,12 +60,6 @@ public class usuarioGUI extends javax.swing.JFrame {
         lblId.setLabelFor(lblId);
         lblId.setText("ID:");
 
-        txtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
-            }
-        });
-
         lblNome.setLabelFor(lblNome);
         lblNome.setText("Nome:");
 
@@ -75,10 +69,10 @@ public class usuarioGUI extends javax.swing.JFrame {
         lblSenha.setLabelFor(lblSenha);
         lblSenha.setText("Senha:");
 
-        btnFind.setText("Buscar");
-        btnFind.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFindActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -121,6 +115,11 @@ public class usuarioGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblUsers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblUsersMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblUsers);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,7 +136,7 @@ public class usuarioGUI extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(txtId)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnFind))
+                                    .addComponent(btnBuscar))
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblId)
                             .addComponent(lblNome))
@@ -179,7 +178,7 @@ public class usuarioGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnFind))
+                            .addComponent(btnBuscar))
                         .addGap(18, 18, 18)
                         .addComponent(lblSenha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -198,24 +197,18 @@ public class usuarioGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
-
-    private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         int id = Integer.valueOf(txtId.getText());
         Optional<usuario> u = usuarioController.getById(id);
         u.ifPresentOrElse(us -> {
-            
-                                    txtNome.setText(us.getNome());
-                                    txtUsername.setText(us.getUsername());
-            
-                        }, ()-> {
-                                    JOptionPane.showMessageDialog(this, "ID nao encontrado!");
-                                    txtId.setText("");
-                                    txtId.requestFocus();
-                                });
-    }//GEN-LAST:event_btnFindActionPerformed
+            txtNome.setText(us.getNome());
+            txtUsername.setText(us.getUsername());
+        }, () -> {
+            JOptionPane.showMessageDialog(this, "ID nao encontrado!");
+            txtId.setText("");
+            txtId.requestFocus();
+        });
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         txtId.setText("");
@@ -232,22 +225,33 @@ public class usuarioGUI extends javax.swing.JFrame {
         char[] senhaArray = txtSenha.getPassword();
         String senha = new String(senhaArray);
         senha = BCrypt.hashpw(senha, BCrypt.gensalt());
-        
+
         usuarioController.add(nome, username, senha);
-        
+
         JOptionPane.showMessageDialog(this, "Usuario Salvo!");
         popularTabela(usuarioController.getAll());
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        int id = Integer.valueOf(txtId.getText());
-        if(usuarioController.delete(id)) {
-            JOptionPane.showMessageDialog(this, "Usuario excluido!");
+        int res = JOptionPane.showConfirmDialog(
+                this,
+                "Tem certeza?",
+                "Confirmar exclusao",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+        );
+        if (res == JOptionPane.YES_OPTION) {
+            int id = Integer.valueOf(txtId.getText());
+            if (usuarioController.delete(id)) {
+                JOptionPane.showMessageDialog(this, "Usuario excluido!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario nao encontrado!");
+            }
+            popularTabela(usuarioController.getAll());
+
         } else {
-            JOptionPane.showMessageDialog(this, "Usuario nao encontrado!");
+            JOptionPane.showMessageDialog(this, "Te liga bicho!");
         }
-        
-        popularTabela(usuarioController.getAll());
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -257,14 +261,28 @@ public class usuarioGUI extends javax.swing.JFrame {
         char[] senhaArray = txtSenha.getPassword();
         String senha = new String(senhaArray);
         senha = BCrypt.hashpw(senha, BCrypt.gensalt());
-        
-        if(usuarioController.update(id, nome, username, senha)) {
+
+        if (usuarioController.update(id, nome, username, senha)) {
             JOptionPane.showMessageDialog(this, "Usuario alterado!");
         } else {
             JOptionPane.showMessageDialog(this, "Usuario nao encontrado!");
         }
         popularTabela(usuarioController.getAll());
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void tblUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsersMouseClicked
+        int id = (int) tblUsers.getValueAt(tblUsers.getSelectedRow(), 0);
+        Optional<usuario> u = usuarioController.getById(id);
+        u.ifPresentOrElse(us -> {
+            txtId.setText(String.valueOf(us.getId()));
+            txtNome.setText(us.getNome());
+            txtUsername.setText(us.getUsername());
+        }, () -> {
+            JOptionPane.showMessageDialog(this, "ID nao encontrado!");
+            txtId.setText("");
+            txtId.requestFocus();
+        });
+    }//GEN-LAST:event_tblUsersMouseClicked
 
     public void popularTabela(ArrayList<usuario> usuarios) {
         DefaultTableModel model = new DefaultTableModel();
@@ -317,8 +335,8 @@ public class usuarioGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnFind;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JScrollPane jScrollPane1;

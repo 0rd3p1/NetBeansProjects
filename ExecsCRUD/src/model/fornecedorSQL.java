@@ -106,7 +106,7 @@ public class fornecedorSQL {
     }
 
     public boolean update(int id, String rS, String nF, int cnpj) {
-        String sql = "UPDATE usuario SET nome = ?, usuario = ?, senha = ? WHERE id = ?";
+        String sql = "UPDATE fornecedor SET razao_social = ?, nome_fantasia = ?, CNPJ = ? WHERE id = ?";
         try (Connection conn = DAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, rS);
             stmt.setString(2, nF);
