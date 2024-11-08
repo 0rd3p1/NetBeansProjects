@@ -61,21 +61,20 @@ public class fornecedorSQL {
         return Optional.empty();
     }
 
-    public ArrayList<fornecedor> getByRs(String rS) {
-        ArrayList<fornecedor> fornecedores = new ArrayList<>();
+    public Optional<fornecedor> getByRs(String rS) {
         String sql = "SELECT id, razao_social, nome_fantasia, CNPJ FROM fornecedor WHERE razao_social like(?)";
         try (Connection conn = DAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, rS + "%");
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
                 fornecedor f = new fornecedor(rs.getInt("id"), rs.getString("razao_social"),
                 rs.getString("nome_fantasia"), rs.getInt("CNPJ"));
-                fornecedores.add(f);
+                return Optional.of(f);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return fornecedores;
+        return Optional.empty();
     }
     
     public Optional<fornecedor> getByCnpj(int cnpj) {

@@ -56,21 +56,20 @@ public class produtoSQL {
         return Optional.empty();
     }
 
-    public ArrayList<produto> getByName(String n) {
-        ArrayList<produto> produtos = new ArrayList<>();
+    public Optional<produto> getByName(String n) {
         String sql = "SELECT id, nome, valor FROM produto WHERE nome like(?)";
         try (Connection conn = DAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, n + "%");
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
                 produto p = new produto(rs.getInt("id"), rs.getString("nome"),
                 rs.getFloat("valor"));
-                produtos.add(p);
+                return Optional.of(p);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return produtos;
+        return Optional.empty();
     }
     
     public boolean update(int id, String n, float v) {

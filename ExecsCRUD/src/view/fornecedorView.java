@@ -57,28 +57,15 @@ public class fornecedorView {
         System.out.print("ID: ");
         int id = sc.nextInt();
         Optional<fornecedor> f = fornecedorController.getById(id);
-        f.ifPresentOrElse(fo -> System.out.println("ID: " + fo.getId() + "\tRazao Social: " + fo.getRs() + "\tNome Fantasia: " + fo.getNf() + "\tCNPJ: " + fo.getCnpj()), () -> System.out.println("Nao encontrado!"));
+        f.ifPresentOrElse(fs -> System.out.println("ID: " + fs.getId() + "\tRazao Social: " + fs.getRs() + "\tNome Fantasia: " + fs.getNf() + "\tCNPJ: " + fs.getCnpj()), () -> System.out.println("Nao encontrado!"));
     }
 
     public void getByRs() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Razao Social: ");
         String rS = sc.nextLine();
-        ArrayList<fornecedor> res = fornecedorController.getByRs(rS);
-        if (res.isEmpty()) {
-            System.out.println("Nao foi encontrado nenhum fornecedor!");
-        } else {
-            for (fornecedor f : res) {
-                System.out.print("ID: ");
-                System.out.print(f.getId() + "\t");
-                System.out.print("Razao Social: ");
-                System.out.print(f.getRs() + "\t");
-                System.out.print("Nome Fantasia: ");
-                System.out.print(f.getNf() + "\t");
-                System.out.print("CNPJ: ");
-                System.out.println(f.getCnpj() + "\t");
-            }
-        }
+        Optional<fornecedor> f = fornecedorController.getByRs(rS);
+        f.ifPresentOrElse(fs -> System.out.println("ID: " + fs.getId() + "\tRazao Social: " + fs.getRs() + "\tNome Fantasia: " + fs.getNf() + "\tCNPJ: " + fs.getCnpj()), () -> System.out.println("Nao encontrado!"));
     }
 
     public void getByCnpj() {
@@ -86,7 +73,7 @@ public class fornecedorView {
         System.out.print("CNPJ: ");
         int cnpj = sc.nextInt();
         Optional<fornecedor> f = fornecedorController.getByCnpj(cnpj);
-        f.ifPresentOrElse(fo -> System.out.println("ID: " + fo.getId() + "\tRazao Social: " + fo.getRs() + "\tNome Fantasia: " + fo.getNf() + "\tCNPJ: " + fo.getCnpj()), () -> System.out.println("Nao encontrado!"));
+        f.ifPresentOrElse(fs -> System.out.println("ID: " + fs.getId() + "\tRazao Social: " + fs.getRs() + "\tNome Fantasia: " + fs.getNf() + "\tCNPJ: " + fs.getCnpj()), () -> System.out.println("Nao encontrado!"));
     }
 
     public void update() {

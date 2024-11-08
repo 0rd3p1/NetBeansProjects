@@ -57,19 +57,8 @@ public class produtoView {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nome: ");
         String n = sc.nextLine();
-        ArrayList<produto> res = produtoController.getByName(n);
-        if (res.isEmpty()) {
-            System.out.println("Nao foi encontrado nenhum produto!");
-        } else {
-            for (produto p : res) {
-                System.out.print("ID: ");
-                System.out.print(p.getId() + "\t");
-                System.out.print("Nome: ");
-                System.out.print(p.getN() + "\t");
-                System.out.print("Valor: ");
-                System.out.print(p.getV() + "\t");
-            }
-        }
+        Optional<produto> p = produtoController.getByName(n);
+        p.ifPresentOrElse(ps -> System.out.println("ID: " + ps.getId() + "\tNome: " + ps.getN()+ "\tValor: " + ps.getV()), () -> System.out.println("Nao encontrado!"));
     }
 
     public void update() {

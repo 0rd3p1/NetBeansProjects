@@ -34,7 +34,7 @@ public class produtoController {
         return this.produtoSQL.getById(id);
     }
     
-    public ArrayList<produto> getByName(String n) {
+    public Optional<produto> getByName(String n) {
         return this.produtoSQL.getByName(n);
     }
     

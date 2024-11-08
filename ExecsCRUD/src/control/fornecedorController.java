@@ -35,7 +35,7 @@ public class fornecedorController {
         return this.fornecedorSQL.getById(id);
     }
     
-    public ArrayList<fornecedor> getByRs(String rS) {
+    public Optional<fornecedor> getByRs(String rS) {
         return this.fornecedorSQL.getByRs(rS);
     }
     
