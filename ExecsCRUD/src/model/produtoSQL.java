@@ -97,7 +97,7 @@ public class produtoSQL {
     }
 
     public ArrayList<produto> getByMin(float v1) {
-        String sql = "SELECT MIN(?) FROM produto";
+        String sql = "SELECT * FROM produto WHERE valor >= ?";
         ArrayList<produto> produtos = new ArrayList<>();
         try (Connection conn = DAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setFloat(1, v1);
@@ -114,7 +114,7 @@ public class produtoSQL {
     }
     
     public ArrayList<produto> getByMax(float v1) {
-        String sql = "SELECT MAX(?) FROM produto";
+        String sql = "SELECT * FROM produto WHERE valor <= ?";
         ArrayList<produto> produtos = new ArrayList<>();
         try (Connection conn = DAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setFloat(1, v1);

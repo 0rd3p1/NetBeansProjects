@@ -247,7 +247,7 @@ public class produtoGUI extends javax.swing.JFrame {
         txtId.setText("");
         txtN.setText("");
         txtV.setText("");
-        txtId.requestFocus();
+        txtN.requestFocus();
         popularTabela(produtoController.getAll());
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -276,8 +276,6 @@ public class produtoGUI extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Produto nao encontrado!");
             }
-            popularTabela(produtoController.getAll());
-
         } else {
             JOptionPane.showMessageDialog(this, "Abre o olho japones!");
         }
@@ -325,15 +323,47 @@ public class produtoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarNActionPerformed
 
     private void btnMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaxActionPerformed
-        // TODO add your handling code here:
+        String input = JOptionPane.showInputDialog(this, "Qual valor maximo buscar?");
+        ArrayList<produto> res = new ArrayList<>();
+        try {
+            if (input != null) {
+                float v1 = Float.parseFloat(input);
+                res = produtoController.getByMax(v1);
+                popularTabela(res);
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Valor invalido!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnMaxActionPerformed
 
     private void MinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinActionPerformed
-        // TODO add your handling code here:
+        String input = JOptionPane.showInputDialog(this, "Qual valor minimo buscar?");
+        ArrayList<produto> res = new ArrayList<>();
+        try {
+            if (input != null) {
+                float v1 = Float.parseFloat(input);
+                res = produtoController.getByMin(v1);
+                popularTabela(res);
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Valor invalido!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_MinActionPerformed
 
     private void btnEntreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntreActionPerformed
-        // TODO add your handling code here:
+        String input1 = JOptionPane.showInputDialog(this, "Qual o primeiro valor buscar?");
+        String input2 = JOptionPane.showInputDialog(this, "Qual o segundo valor buscar?");
+        ArrayList<produto> res = new ArrayList<>();
+        try {
+            if (input1 != null && input2 != null) {
+                float v1 = Float.parseFloat(input1);
+                float v2 = Float.parseFloat(input2);
+                res = produtoController.getByBet(v1, v2);
+                popularTabela(res);
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Valor invalido!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnEntreActionPerformed
 
     public void popularTabela(ArrayList<produto> produto) {

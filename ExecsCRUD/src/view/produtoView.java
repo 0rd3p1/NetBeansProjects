@@ -103,7 +103,7 @@ public class produtoView {
                 System.out.print("Nome: ");
                 System.out.print(p.getN() + "\t");
                 System.out.print("Valor: ");
-                System.out.print(p.getV() + "\t");
+                System.out.print(p.getV() + "\t\n");
             }
         }
     }
@@ -122,7 +122,7 @@ public class produtoView {
                 System.out.print("Nome: ");
                 System.out.print(p.getN() + "\t");
                 System.out.print("Valor: ");
-                System.out.print(p.getV() + "\t");
+                System.out.print(p.getV() + "\t\n");
             }
         }
     }
@@ -143,7 +143,7 @@ public class produtoView {
                 System.out.print("Nome: ");
                 System.out.print(p.getN() + "\t");
                 System.out.print("Valor: ");
-                System.out.print(p.getV() + "\t");
+                System.out.print(p.getV() + "\t\n");
             }
         }
     }
