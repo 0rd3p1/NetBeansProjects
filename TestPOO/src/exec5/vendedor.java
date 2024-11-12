@@ -8,15 +8,15 @@ package exec5;
  *
  * @author Aluno
  */
-public class gerente extends funcionario {
-    
-    public gerente(String n, double s, double b) {
+public class vendedor extends funcionario {
+
+    public vendedor(String n, double s, double b) {
         super(n, s, b);
     }
 
     @Override
     public double bonus() {
-        this.setBonus(this.getSalario() / 0.15);
+        this.setBonus(this.getSalario() / 0.05);
         return this.getBonus();
     }
     

@@ -12,11 +12,15 @@ public abstract class funcionario {
     
     private String nome;
     private double salario;
+    private double bonus;
     
-    public funcionario(String n, double s) {
+    public funcionario(String n, double s, double b) {
         this.nome = n;
         this.salario = s;
+        this.bonus = b;
     }
+    
+    public abstract double bonus();
 
     public String getNome() {
         return nome;
@@ -32,6 +36,14 @@ public abstract class funcionario {
 
     public void setSalario(double s) {
         this.salario = s;
+    }
+
+    public double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
     }
     
 }
