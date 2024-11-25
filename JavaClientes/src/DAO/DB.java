@@ -15,7 +15,7 @@ public class DB {
     
     private static Connection connection = null;
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         try {
             connection = Conexao.getConn().abrirConexao();
             System.out.println("Base criada com sucesso");
@@ -24,6 +24,6 @@ public class DB {
             System.out.println(e.getMessage());
             System.exit(0);
         }
-    }
+    }*/
     
 }

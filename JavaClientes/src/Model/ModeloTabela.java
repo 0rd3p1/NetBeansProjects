@@ -47,13 +47,13 @@ public class ModeloTabela extends AbstractTableModel {
             case 3 -> {
                 return cliente.getEmail();
             }
-            case 4 -> { 
+            case 4 -> {
                 return cliente.getTelefone();
             }
-            case 5 -> { 
+            case 5 -> {
                 return cliente.getEndereco();
             }
-            default -> { 
+            default -> {
                 return null;
             }
         }

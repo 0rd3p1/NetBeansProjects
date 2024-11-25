@@ -28,7 +28,7 @@ private static PreparedStatement pst = null;
     private static String LISTAR_CLIENTES = "SELECT * FROM cliente WHERE 1 = 1"; //qualquer coisa a gente apaga
     private static String CONSULTAR_USUARIO = "SELECT usuario, senha FROM usuario WHERE usuario = ? and senha = ?";
     
-    public void cadastrarCliente(Cliente cliente) throws SQLException {
+    /*public void cadastrarCliente(Cliente cliente) throws SQLException {
         Connection connection = Conexao.getConn().abrirConexao();
         try {
             pst.connection.prepareStatement(CADASTRAR_CLIENTE);
@@ -46,6 +46,6 @@ private static PreparedStatement pst = null;
         } finally {
             fecharConexao();
         }
-    }
+    }*/
     
 }

@@ -29,7 +29,7 @@ public class Conexao {
         return conn;
     }
     
-    public Connection abrirConexao(){
+    /*public Connection abrirConexao(){
         try{
             //Carregar o driver JDBC para MySQL
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -51,6 +51,6 @@ public class Conexao {
         } finally {
             conexao = null;
         }
-    }
+    }*/
     
 }
