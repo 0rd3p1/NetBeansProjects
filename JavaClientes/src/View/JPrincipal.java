@@ -4,17 +4,32 @@
  */
 package View;
 
+import Model.Cliente;
+import java.util.ArrayList;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Aluno
  */
 public class JPrincipal extends javax.swing.JFrame {
 
+    private ArrayList<Cliente> clientes;
+    
     /**
      * Creates new form JPrincipal
      */
     public JPrincipal() {
         initComponents();
+        
+        // Inicializando a lista
+        clientes = new ArrayList<>();
+        
+        // Adicionando os clientes a lista
+        clientes.add(new Cliente(1, "Joao", "20071234", "joao@gmail.com", "400285235", "Av. Emancipação 620"));
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
     }
 
     /**

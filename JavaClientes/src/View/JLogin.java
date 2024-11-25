@@ -152,15 +152,15 @@ public class JLogin extends javax.swing.JFrame {
         System.out.println(hash);
         
         if(txtUsuario.getText().isBlank() || new String(pswSenha.getPassword()).isBlank()) {
-            if(hash.equals("8CFBCFCD27C86A9CA3648BB0386C654B")) {
+            //if(hash.equals("8CFBCFCD27C86A9CA3648BB0386C654B")) {
                 JOptionPane.showMessageDialog(frame, "Preencha todos os campos");
                 SwingUtilities.invokeLater(() -> {
                     JPrincipal jPrincipal = new JPrincipal();
                     jPrincipal.setLocationRelativeTo(null);
                     jPrincipal.setVisible(true);
-                    
+                    dispose();
                 });
-            }
+            //}
         } else {
             JOptionPane.showMessageDialog(frame, "Verifique as informacoes!", "Erro", JOptionPane.WARNING_MESSAGE);
         }
