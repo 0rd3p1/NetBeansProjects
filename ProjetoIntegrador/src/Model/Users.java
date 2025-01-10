@@ -6,11 +6,11 @@ public class Users {
     private String username;
     private String passwd;
 
-    public Users(/*int id, String username, String passwd*/) {
+    public Users(int id, String username, String passwd) {
         super();
-        /*this.id = id;
+        this.id = id;
         this.username = username;
-        this.passwd = passwd;*/
+        this.passwd = passwd;
     }
 
     public int getId() {
