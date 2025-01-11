@@ -48,10 +48,10 @@ public class UserDAO {
         return null;
     }
     
-    public void hist(int id, String username, String passwd) {
+    public void hist(String username) {
         String sql = "SELECT * FROM operations WHERE idUser = ?";
         try (Connection conn = DB.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
+            stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 System.out.println(rs);

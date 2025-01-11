@@ -23,8 +23,8 @@ public class CalculatorControl {
         return userDAO.del(username, passwd);
     }
     
-    public void hist(int id, String username, String passwd) {
-        userDAO.hist(id, username, passwd);
+    public void hist(String username) {
+        userDAO.hist(username);
     }
     
 }
