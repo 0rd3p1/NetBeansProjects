@@ -1,6 +1,6 @@
 package View;
 
-import Control.CalculatorControl;
+import Control.UserControl;
 import DAO.UserDAO;
 import javax.swing.JOptionPane;
 import org.mindrot.jbcrypt.BCrypt;
@@ -10,10 +10,10 @@ public class LoginJFrame extends javax.swing.JFrame {
     /**
      * Creates new form CalculatorJFrame
      */
-    CalculatorControl control; // Instanceamento fora para poder puxar metodos nos botoes
+    UserControl control; // Instanceamento fora para poder puxar metodos nos botoes
     
     public LoginJFrame() {
-        control = new CalculatorControl(new UserDAO());
+        control = new UserControl(new UserDAO());
         initComponents();
     }
 
