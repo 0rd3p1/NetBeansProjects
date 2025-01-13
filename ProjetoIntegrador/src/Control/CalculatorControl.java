@@ -1,7 +1,6 @@
 package Control;
 
 import DAO.UserDAO;
-import Model.Users;
 
 public class CalculatorControl {
 
@@ -11,20 +10,24 @@ public class CalculatorControl {
         this.userDAO = userDAO;
     }
     
-    public Users auth(int id, String username, String passwd) {
+    public boolean auth(int id, String username, String passwd) {
         return userDAO.auth(id, username, passwd);
     }
     
-    public Users add(String username, String passwd) {
+    public boolean add(String username, String passwd) {
         return userDAO.add(username, passwd);
     }
     
-    public Users del(String username, String passwd) {
+    public boolean del(String username, String passwd) {
         return userDAO.del(username, passwd);
     }
     
-    public void hist(String username) {
-        userDAO.hist(username);
+    public boolean exis(String username) {
+        return userDAO.exis(username);
+    }
+    
+    public String getPswByUser(String username) {
+        return userDAO.getPswByUser(username);
     }
     
 }

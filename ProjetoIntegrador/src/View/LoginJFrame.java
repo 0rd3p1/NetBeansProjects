@@ -1,11 +1,19 @@
 package View;
 
+import Control.CalculatorControl;
+import DAO.UserDAO;
+import javax.swing.JOptionPane;
+import org.mindrot.jbcrypt.BCrypt;
+
 public class LoginJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form CalculatorJFrame
      */
+    CalculatorControl control; // Instanceamento fora para poder puxar metodos nos botoes
+    
     public LoginJFrame() {
+        control = new CalculatorControl(new UserDAO());
         initComponents();
     }
 
@@ -18,66 +26,98 @@ public class LoginJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bttAdd = new javax.swing.JButton();
-        bttAuth = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
+        btnAdd = new javax.swing.JButton();
+        btnAuth = new javax.swing.JButton();
         txtUsername = new javax.swing.JTextField();
         pswPasswd = new javax.swing.JPasswordField();
         lblUsername = new javax.swing.JLabel();
         lblPasswd = new javax.swing.JLabel();
+        btnDel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        bttAdd.setText("Cadastrar");
-        bttAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttAddActionPerformed(evt);
-            }
-        });
-
-        bttAuth.setText("Entrar");
-        bttAuth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttAuthActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setForeground(new java.awt.Color(153, 153, 153));
 
         lblWelcome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblWelcome.setForeground(new java.awt.Color(51, 51, 51));
+        lblWelcome.setLabelFor(this);
         lblWelcome.setText("Bem-Vindo ao Bizzonhos Calculator!!");
 
+        btnAdd.setBackground(new java.awt.Color(153, 153, 153));
+        btnAdd.setForeground(new java.awt.Color(51, 51, 51));
+        btnAdd.setText("Cadastrar");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        btnAuth.setBackground(new java.awt.Color(153, 153, 153));
+        btnAuth.setForeground(new java.awt.Color(51, 51, 51));
+        btnAuth.setText("Entrar");
+        btnAuth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAuthActionPerformed(evt);
+            }
+        });
+
+        txtUsername.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsername.setForeground(new java.awt.Color(0, 0, 0));
+
+        pswPasswd.setBackground(new java.awt.Color(255, 255, 255));
+        pswPasswd.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblUsername.setForeground(new java.awt.Color(51, 51, 51));
+        lblUsername.setLabelFor(txtUsername);
         lblUsername.setText("Usuario");
 
+        lblPasswd.setForeground(new java.awt.Color(51, 51, 51));
+        lblPasswd.setLabelFor(pswPasswd);
         lblPasswd.setText("Senha");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnDel.setBackground(new java.awt.Color(153, 153, 153));
+        btnDel.setForeground(new java.awt.Color(51, 51, 51));
+        btnDel.setText("Excluir");
+        btnDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblWelcome))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblUsername)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(bttAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bttAuth, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(btnAdd)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnDel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnAuth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addComponent(pswPasswd)
                                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblPasswd)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblWelcome)))
+                            .addComponent(lblPasswd))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addComponent(lblWelcome)
-                .addGap(34, 34, 34)
+                .addGap(28, 28, 28)
                 .addComponent(lblUsername)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -86,32 +126,89 @@ public class LoginJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pswPasswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bttAdd)
-                    .addComponent(bttAuth))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd)
+                    .addComponent(btnAuth)
+                    .addComponent(btnDel))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bttAuthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttAuthActionPerformed
+    private void btnAuthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuthActionPerformed
+        String username = txtUsername.getText();
+        char[] pswArray = pswPasswd.getPassword();
+        String passwd = new String(pswArray);
+        String hash = control.getPswByUser(username);
         
-        
-        CalculatorJFrame calc = new CalculatorJFrame();
-        calc.setLocationRelativeTo(null);
-        calc.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_bttAuthActionPerformed
+        boolean user = control.auth(0, username, hash);
 
-    private void bttAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttAddActionPerformed
+        if (user == true && username != null && BCrypt.checkpw(passwd, hash)) {
+            CalculatorJFrame calc = new CalculatorJFrame();
+            calc.setLocationRelativeTo(null);
+            calc.setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario ou senha invalidos!");
+        }
+    }//GEN-LAST:event_btnAuthActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        String username = txtUsername.getText();
+        char[] pswArray = pswPasswd.getPassword();
+        String passwd = new String(pswArray);
+        String hash = BCrypt.hashpw(passwd, BCrypt.gensalt());
         
-        
-        CalculatorJFrame calc = new CalculatorJFrame();
-        calc.setLocationRelativeTo(null);
-        calc.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_bttAddActionPerformed
+        if (control.exis(username)) {
+            JOptionPane.showMessageDialog(this, "Usuario ja cadastrado!");
+        } else {
+            boolean user = control.add(username, hash);
+            
+            if (user) {
+                JOptionPane.showMessageDialog(this, "Usuario cadastrado!");
+                CalculatorJFrame calc = new CalculatorJFrame();
+                calc.setLocationRelativeTo(null);
+                calc.setVisible(true);
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao cadastrar!");
+            }
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
+        String username = txtUsername.getText();
+        char[] pswArray = pswPasswd.getPassword();
+        String passwd = new String(pswArray);
+        String hash = control.getPswByUser(username);
+
+        if (control.exis(username) && BCrypt.checkpw(passwd, hash)) {
+            int res = JOptionPane.showConfirmDialog(
+                this,
+                "Tem certeza?",
+                "Confirmar exclusao",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+            );
+            if (res == JOptionPane.YES_OPTION) {
+                control.del(username, hash);
+                txtUsername.setText(null);
+                pswPasswd.setText(null);
+            }
+        }
+    }//GEN-LAST:event_btnDelActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -141,14 +238,20 @@ public class LoginJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginJFrame().setVisible(true);
+                //new LoginJFrame().setVisible(true);
+                
+                LoginJFrame logJF = new LoginJFrame();
+                logJF.setVisible(true);
+                logJF.setLocationRelativeTo(null);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bttAdd;
-    private javax.swing.JButton bttAuth;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnAuth;
+    private javax.swing.JButton btnDel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblPasswd;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JLabel lblWelcome;

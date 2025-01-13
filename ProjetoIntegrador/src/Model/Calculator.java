@@ -1,73 +1,44 @@
 package Model;
 
-import java.util.ArrayList;
-
-public class Calculator implements Operations{
-    
-    ArrayList<Double> hist;
+public class Calculator implements Operations {
     
     public double val1;
     public double val2;
     
     @Override
-    public void som() {
+    public double som(double val1, double val2) {
         double res = val1 + val2;
-        hist.add(res);
-        while(val2 > 0) {
-            res = val1 + val2;
-            hist.add(res);
-        }
-        hist.add(res);
+        return res;
     }
 
     @Override
-    public void sub() {
+    public double sub(double val1, double val2) {
         double res = val1 - val2;
-        hist.add(res);
-        while(val2 > 0) {
-            res = val1 - val2;
-            hist.add(res);
-        }
-        hist.add(res);
+        return res;
     }
 
     @Override
-    public void div() {
+    public double div(double val1, double val2) {
         double res = val1 / val2;
-        hist.add(res);
-        while(val2 > 0) {
-            res = val1 / val2;
-            hist.add(res);
-        }
-        hist.add(res);
+        return res;
     }
 
     @Override
-    public void mul() {
-        double res = val1 * val2;
-        hist.add(res);
-        while(val2 > 0) {
-            res = val1 * val2;
-            hist.add(res);
-        }
-        hist.add(res);
+    public double mul(double val1, double val2) {
+        double res = val1 / val2;
+        return res;
     }
 
     @Override
-    public void rai() {
+    public double rai(double val1) {
         double res = Math.sqrt(val1);
-        hist.add(res);
+        return res;
     }
 
     @Override
-    public void pot() {
+    public double pot(double val1, double val2) {
         double res = Math.pow(val2, val2);
-        hist.add(res);
-        while(val2 > 0) {
-            res = Math.pow(val1, val2);
-            hist.add(res);
-        }
-        hist.add(res);
+        return res;
     }
     
 }

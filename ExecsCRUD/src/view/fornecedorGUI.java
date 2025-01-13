@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.fornecedor;
 import model.fornecedorSQL;
-import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *

@@ -5,8 +5,9 @@ import java.sql.*;
 
 public class UserDAO {
     
-    public Users auth(int id, String username, String passwd) {
-        String sql = "SELECT * FROM users WHERE username = '?' AND passwd = '?'";
+    // Autenticar o login
+    public boolean auth(int id, String username, String passwd) {
+        String sql = "SELECT * FROM users WHERE username = ? AND passwd = ?";
         try (Connection conn = DB.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, username);
             stmt.setString(2, passwd);
@@ -16,49 +17,70 @@ public class UserDAO {
                 user.setId(rs.getInt("id"));
                 user.setUsername(rs.getString("username"));
                 user.setPasswd(rs.getString("passwd"));
-                return user;
+                return true;
             }
         } catch (SQLException e) {
             System.out.println("Erro na autenticacao: " + e.getMessage());
         }
-        return null;
+        return false;
     }
     
-    public Users add(String username, String passwd) {
-        String sql = "INSERT INTO users VALUES (DEFAULT, '?', '?')";
+    // Cadastrar um login
+    public boolean add(String username, String passwd) {
+        String sql = "INSERT INTO users VALUES (DEFAULT, ?, ?)";
         try (Connection conn = DB.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, username);
             stmt.setString(2, passwd);
             stmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.out.println("Erro ao cadastrar: " + e.getMessage());
         }
-        return null;
+        return false;
     }
     
-    public Users del(String username, String passwd) {
-        String sql = "DELETE FROM usuers WHERE username = '?' AND passwd = '?'";
+    // Deletar a conta logada
+    public boolean del(String username, String passwd) {
+        String sql = "DELETE FROM users WHERE username = ? AND passwd = ?";
         try (Connection conn = DB.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, username);
             stmt.setString(2, passwd);
             stmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Erro ao deletar: " + e.getMessage());
         }
-        return null;
+        return false;
     }
     
-    public void hist(String username) {
-        String sql = "SELECT * FROM operations WHERE idUser = ?";
+    // Verificar se o username ja esta sendo utilizado
+    public boolean exis(String username) {
+        String sql = "SELECT username FROM users WHERE username = ?";
         try (Connection conn = DB.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println(rs);
+                return true;
             }
         } catch (SQLException e) {
-            System.out.println("Erro no historico: " + e.getMessage());
+            System.out.println("Erro na pesquisa: " + e.getMessage());
         }
+        return false;
+    }
+    
+    // Pesquisar senha pelo username por conta do Hash de criptografia na autenticacao
+    public String getPswByUser(String username) {
+        String sql = "SELECT passwd FROM users WHERE username = ?";
+        try (Connection conn = DB.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("passwd");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro na pesquisa: " + e.getMessage());
+        }
+        return null;
     }
     
 }
