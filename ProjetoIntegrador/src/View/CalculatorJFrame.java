@@ -40,10 +40,10 @@ public class CalculatorJFrame extends javax.swing.JFrame {
         btn8 = new javax.swing.JButton();
         btnRai = new javax.swing.JButton();
         btn0 = new javax.swing.JButton();
-        btnRes = new javax.swing.JButton();
+        btnC1 = new javax.swing.JButton();
         lblName = new javax.swing.JLabel();
         txtNum2 = new javax.swing.JTextField();
-        btnC = new javax.swing.JButton();
+        btnC2 = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         txtNum1 = new javax.swing.JTextField();
         lblApont = new javax.swing.JLabel();
@@ -191,16 +191,17 @@ public class CalculatorJFrame extends javax.swing.JFrame {
             }
         });
 
-        btnRes.setBackground(new java.awt.Color(153, 153, 153));
-        btnRes.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        btnRes.setForeground(new java.awt.Color(51, 51, 51));
-        btnRes.setText("=");
-        btnRes.addActionListener(new java.awt.event.ActionListener() {
+        btnC1.setBackground(new java.awt.Color(153, 153, 153));
+        btnC1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        btnC1.setForeground(new java.awt.Color(51, 51, 51));
+        btnC1.setText("C");
+        btnC1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResActionPerformed(evt);
+                btnC1ActionPerformed(evt);
             }
         });
 
+        lblName.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         lblName.setLabelFor(txtNum2);
         lblName.setText("Bizzonhos Calculator");
 
@@ -208,13 +209,13 @@ public class CalculatorJFrame extends javax.swing.JFrame {
         txtNum2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         txtNum2.setForeground(new java.awt.Color(255, 255, 255));
 
-        btnC.setBackground(new java.awt.Color(153, 153, 153));
-        btnC.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        btnC.setForeground(new java.awt.Color(51, 51, 51));
-        btnC.setText("C");
-        btnC.addActionListener(new java.awt.event.ActionListener() {
+        btnC2.setBackground(new java.awt.Color(153, 153, 153));
+        btnC2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        btnC2.setForeground(new java.awt.Color(51, 51, 51));
+        btnC2.setText("C");
+        btnC2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCActionPerformed(evt);
+                btnC22ActionPerformed(evt);
             }
         });
 
@@ -248,7 +249,7 @@ public class CalculatorJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnC2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btn7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +260,7 @@ public class CalculatorJFrame extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btn0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnRes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(btnC1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -346,9 +347,9 @@ public class CalculatorJFrame extends javax.swing.JFrame {
                             .addComponent(btn7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnC2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnC1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -465,14 +466,13 @@ public class CalculatorJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRaiActionPerformed
 
-    private void btnResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResActionPerformed
-        btnRes.setEnabled(true);
-    }//GEN-LAST:event_btnResActionPerformed
-
-    private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
+    private void btnC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC1ActionPerformed
         txtNum1.setText(null);
+    }//GEN-LAST:event_btnC1ActionPerformed
+
+    private void btnC22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC22ActionPerformed
         txtNum2.setText(null);
-    }//GEN-LAST:event_btnCActionPerformed
+    }//GEN-LAST:event_btnC22ActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         LoginJFrame log = new LoginJFrame();
@@ -531,13 +531,13 @@ public class CalculatorJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btn7;
     private javax.swing.JButton btn8;
     private javax.swing.JButton btn9;
-    private javax.swing.JButton btnC;
+    private javax.swing.JButton btnC1;
+    private javax.swing.JButton btnC2;
     private javax.swing.JButton btnDiv;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMul;
     private javax.swing.JButton btnPot;
     private javax.swing.JButton btnRai;
-    private javax.swing.JButton btnRes;
     private javax.swing.JButton btnSom;
     private javax.swing.JButton btnSub;
     private javax.swing.JLabel lblApont;
